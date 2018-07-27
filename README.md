@@ -57,7 +57,7 @@ region: ap-northeast-2
 api keys:
   None
 endpoints:
-  POST - https://mqrmz8ukpg.execute-api.ap-northeast-2.amazonaws.com/prod/test
+  POST - https://xxxxxxx.execute-api.ap-northeast-2.amazonaws.com/prod/test
 functions:
   pubSNS: r1-core-prod-pubSNS
 ```
