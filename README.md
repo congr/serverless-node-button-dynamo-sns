@@ -47,5 +47,5 @@ functions:
 ![image](https://user-images.githubusercontent.com/9853714/43302303-a92693cc-91a4-11e8-9667-b26ec5402b6d.png)
 - DynamoDB
 ![image](https://user-images.githubusercontent.com/9853714/43302323-e50091e0-91a4-11e8-9b88-b146b98fa72a.png)
--Lambda
+- Lambda
 ![image](https://user-images.githubusercontent.com/9853714/43302339-0440147c-91a5-11e8-87fb-de49619717ff.png)
