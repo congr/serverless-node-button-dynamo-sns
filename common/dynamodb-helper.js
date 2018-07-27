@@ -10,6 +10,7 @@ module.exports.putItem = (table, json) => {
 
     console.log('dynamoDb.put params', params)
     dynamoDb.put(params, (error, result) => {
+      console.log(error, result)
       if (error) reject(error)
       else resolve({})
     })

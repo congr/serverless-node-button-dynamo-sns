@@ -58,7 +58,7 @@ exports.pubSNS = (event, context, callback) => {
       serialNumber: event.serialNumber,
       batteryVoltage: event.batteryVoltage,
       clickType: event.clickType,
-      timestamp: Date.now().toString(),
+      timestamp: Date.now(),
       date: new Date().toJSON()
     }
 
