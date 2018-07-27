@@ -1,0 +1,79 @@
+service: r1-core
+
+frameworkVersion: ">=1.1.0 <2.0.0"
+
+plugins:
+  - serverless-webpack
+
+custom:
+  webpackIncludeModules: true
+
+package:
+  exclude:
+    - tmp/**
+    - .git/**
+    - .gitignore
+    - .idea/**
+    - data/**
+    - script/**
+    - template/**
+    - package.json
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: ap-northeast-2
+  stage: prod
+  profile: team #${opt:stage, self:provider.stage}
+  timeout: 10
+  environment:
+    EMAIL: congrtoss@gmail.com
+    STAGE: ${opt:stage, self:provider.stage}
+    REGION: ${opt:region, self:provider.region}
+    DYNAMODB_TABLE_BUTTON: ${self:service}-button-${opt:stage, self:provider.stage}
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+        - cloudwatch:*
+        - events:*
+        - lambda:*
+        - iot:*
+        - logs:*
+        - sns:*
+      Resource: "*"
+
+functions:
+  # Handler
+  pubSNS:
+    handler: handler.pubSNS
+    description: handler
+    events:
+      - iot:
+          sql: "SELECT * FROM 'iotbutton/G030JF0560741XGP'"
+      - http:
+          path: test
+          method: post
+
+resources:
+  Resources:
+    DynamoDbTableButton:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: serialNumber
+            AttributeType: S
+          - AttributeName: timestamp
+            AttributeType: N
+        KeySchema:
+          - AttributeName: serialNumber
+            KeyType: HASH
+          - AttributeName: timestamp
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+        TableName: ${self:provider.environment.DYNAMODB_TABLE_BUTTON}

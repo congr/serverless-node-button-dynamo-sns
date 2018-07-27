@@ -1,0 +1,1 @@
+sls invoke local --function pubSNS --path template/test-post.json

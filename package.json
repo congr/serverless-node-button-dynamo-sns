@@ -1,0 +1,24 @@
+{
+  "name": "iot-platform-core",
+  "version": "0.0.1",
+  "description": "iot-platform-core",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "aes256": "^1.0.2",
+    "aws-signature-v4": "^1.1.0",
+    "crypto": "0.0.3",
+    "moment": "^2.21.0",
+    "request": "^2.85.0",
+    "requestify": "^0.2.5",
+    "ws": "^3.1.0",
+    "xmljson": "^0.2.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "2.135.0",
+    "serverless-webpack": "^1.0.0-rc.4",
+    "standard": "^9.0.1",
+    "uglifyjs-webpack-plugin": "^0.3.0",
+    "webpack-node-externals": "^1.5.4"
+  }
+}
