@@ -62,7 +62,7 @@ functions:
   pubSNS: r1-core-prod-pubSNS
 ```
 
-##Usage
+## Usage
 - AWS IoT
 ![image](https://user-images.githubusercontent.com/9853714/43302303-a92693cc-91a4-11e8-9667-b26ec5402b6d.png)
 - DynamoDB
