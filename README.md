@@ -8,13 +8,33 @@ IoT button data is stored into dynamoDB and published to SNS
 
 ## Setup
 https://serverless.com/framework/docs/providers/aws/guide/installation/
-install
+- install
 ```bash
 $ npm install -g serverless
 ```
 
+- configure serverless.yml
+
+
+Note : write your email correctly
 ```bash
-sls deploy
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: ap-northeast-2
+  stage: prod
+  profile: team #${opt:stage, self:provider.stage}
+  timeout: 10
+  environment:
+    EMAIL: xxxxx@gmail.com
+    STAGE: ${opt:stage, self:provider.stage}
+    REGION: ${opt:region, self:provider.region}
+    DYNAMODB_TABLE_BUTTON: ${self:service}-button-${opt:stage, self:provider.stage}
+```
+
+- Deploy
+```bash
+$ sls deploy
 ```
 
 The result should be similar to :
